@@ -39,7 +39,7 @@ for ip in file_ip:
 	ip = ip.replace("\r","").replace("\n","");
 	while True:
 		if not q.full():
-			t = threading.Thread(target=http_url,args=['src2.cc',80,ip]); #函数名称
+			t = threading.Thread(target=http_url,args=['src2.cc',80,ip]); 
 			t.start();
 			break;
 		else:
