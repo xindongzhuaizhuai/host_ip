@@ -6,7 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-q = Queue.Queue(20)
+q = Queue.Queue(1)
 
 
 def http_url(*list2):
@@ -73,7 +73,8 @@ Accept-Language: zh-CN,zh;q=0.8
 		# 	title2 = str(len(html2));
 
 		if title1 != title:
-			text =  "URL:%s --> IP: %s  ------> Title: %s --------- Title1:%s" % (url,ip,title,title1)
+			text =  "URL:%s --> IP: %s  ------> yes" % (url,ip)
+			text1 =  "URL:%s --> IP: %s  ------> Title: %s " % (url,ip,title)			
 			print text
 			f = open('test.txt', 'a');
 			f.write(text+"\r\n");
