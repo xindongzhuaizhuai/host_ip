@@ -29,7 +29,7 @@ User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like 
 Accept-Language: zh-CN,zh;q=0.8
 
 
-'''% (str(ip))
+'''% (str(url))
 	try:
 		html = "123";
 		socket.setdefaulttimeout(10)
@@ -47,8 +47,8 @@ Accept-Language: zh-CN,zh;q=0.8
 	try:
 		title = soup.title.string;
 	except Exception,e:
-		title = b64encode(html);
-	if title != 'Service Unavailable' and title != '403 Forbidden':
+		title = str(len(html));
+	if title != 'Service Unavailable':
 		try:
 			html1 = "123";
 			# r1 = requests.get('http://%s/'% str(ip),timeout=20); 
@@ -60,20 +60,20 @@ Accept-Language: zh-CN,zh;q=0.8
 			soup1 = BeautifulSoup(html1,"html.parser")
 			title1 = soup1.title.string;
 		except Exception,e:
-			title1 = b64encode(html1);
-		try:
-			html2 = "123";
-			s2=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-			s2.connect( ( '%s'  % (ip) ,p )  );
-			s2.sendall(str3) 
-			html2=s2.recv(3048);
-			soup2 = BeautifulSoup(html1,"html.parser")
-			title2 = soup2.title.string;
-		except Exception,e:
-			title2 = b64encode(html2);
+			title1 = str(len(html1));
+		# try:
+		# 	html2 = "123";
+		# 	s2=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		# 	s2.connect( ( '%s'  % (ip) ,p )  );
+		# 	s2.sendall(str3) 
+		# 	html2=s2.recv(3048);
+		# 	soup2 = BeautifulSoup(html1,"html.parser")
+		# 	title2 = soup2.title.string;
+		# except Exception,e:
+		# 	title2 = str(len(html2));
 
-		if (title1 != title) and (title1 != title2) and (title1 != '403 Forbidden'):
-			text =  "URL:%s --> IP: %s  ------> Title: %s  " % (url,ip,title)
+		if title1 != title:
+			text =  "URL:%s --> IP: %s  ------> Title: %s --------- Title1:%s" % (url,ip,title,title1)
 			print text
 			f = open('test.txt', 'a');
 			f.write(text+"\r\n");
