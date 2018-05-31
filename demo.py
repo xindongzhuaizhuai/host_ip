@@ -6,12 +6,13 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-q = Queue.Queue(1)
+q = Queue.Queue(10)
 
 
 def http_url(*list2):
 	q.put(1)
 	url,p,ip = list2;
+	ip = ip.replace('\r','').replace('\n','');
 	str2 = '''GET / HTTP/1.1
 Host: %s
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
