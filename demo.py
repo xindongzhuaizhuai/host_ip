@@ -12,6 +12,7 @@ q = Queue.Queue(10)
 def http_url(*list2):
 	q.put(1)
 	url,p,ip = list2;
+	url = url.replace('\r','').replace('\n','');
 	ip = ip.replace('\r','').replace('\n','');
 	str2 = '''GET / HTTP/1.1
 Host: %s
