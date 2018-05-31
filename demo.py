@@ -79,7 +79,7 @@ Accept-Language: zh-CN,zh;q=0.8
 			text1 =  "URL:%s --> IP: %s  ------> Title: %s " % (url,ip,title)			
 			print text
 			f = open('test.txt', 'a');
-			f.write(text+"\r\n");
+			f.write(text1+"\r\n");
 			f.close()
 	else:
 		print url,"--->",ip,"No"
