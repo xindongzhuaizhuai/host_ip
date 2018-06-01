@@ -1,7 +1,8 @@
 #coding=utf-8
-import requests,Queue,time,threading,socket,re;
-q = Queue.Queue(25);
-
+import requests,Queue,time,threading,socket,re,sys;
+q = Queue.Queue(10);
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 header1 = {
 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -46,8 +47,8 @@ def http(ip,p):
 	else:
 		q.get();
 		return 0;
+	print url,"yes p:",p
 	text = url+"---->title: %s " % (title);
-	print text
 	f = open('title.txt','a');
 	f.write(text+"\r\n");
 	f.close()
