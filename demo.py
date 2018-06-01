@@ -10,6 +10,7 @@ q = Queue.Queue(10)
 
 
 def http_url(*list2):
+
 	q.put(1)
 	url,p,ip = list2;
 	url = url.replace('\r','').replace('\n','');
@@ -79,7 +80,7 @@ Accept-Language: zh-CN,zh;q=0.8
 			text1 =  "URL:%s --> IP: %s  ------> Title: %s " % (url,ip,title)			
 			print text
 			f = open('test.txt', 'a');
-			f.write(text1+"\r\n");
+			f.write(text+"\r\n");
 			f.close()
 	else:
 		print url,"--->",ip,"No"
@@ -87,12 +88,11 @@ Accept-Language: zh-CN,zh;q=0.8
 	time.sleep(0.5)
 
 
-file_ip = open('./ip.txt','r')
-file_host = open('./host.txt','r')
 
+file_host = open('./host.txt','r')
 for host in file_host:
 	print host,"--->"
-	for ip in file_ip:
+	for ip in open('./ip.txt','r'):
 		if ip.count("*") == 1:
 			for ip_x in xrange(1,255):
 				ip2 = ip.replace("*",str(ip_x));
@@ -115,7 +115,7 @@ for host in file_host:
 					break;
 				else:
 					time.sleep(1)
-
-file_ip.close()
+		print host,ip
+# file_ip.close()
 file_host.close()
 
